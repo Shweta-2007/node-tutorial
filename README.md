@@ -19,6 +19,13 @@
 - "dependencies": {
   "lodash": "^4.17.21"
   },
+
   - First no is major change => If 4 changes to 5 then it will have a breaking changes
     second one is minor one => If 17 changes to 18, there will not be any breaking changes
     last one is for bugs.
+
+- Streams: We get small packages of data come to us at a time so that we can start using them straight away.
+
+# Server
+
+- When we type a domain name into a browser and hit enter, it will find the IP address associated with it and then it will use that to find the computer hosting the website and communicate with that and this way it can send requests and get back responses to and from it.

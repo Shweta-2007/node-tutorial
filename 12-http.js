@@ -1,15 +1,33 @@
 const http = require("http");
+const fs = require("fs");
 const server = http.createServer((req, res) => {
-  if (req.url === "/") {
-    res.end("Welcome to our home page");
+  res.setHeader("content-type", "text/html");
+  let path = "./views/";
+
+  switch (req.url) {
+    case "/":
+      path += "index.html";
+      res.statusCode = 200;
+      break;
+    case "/about":
+      path += "about.html";
+      res.statusCode = 200;
+      break;
+    default:
+      path += "404.html";
+      res.statusCode = 404;
+      break;
   }
-  if (req.url === "/about") {
-    res.end("Here is our about page");
-  }
-  res.end(`
-  <h1>Oops!! Something went wrong</h1>
-  <a href="/">Back to home?</a>
-  `);
+
+  fs.readFile(path, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.end(data);
+    }
+  });
 });
 
-server.listen(5000);
+server.listen(3000, () => {
+  console.log("Server is running at 3000...");
+});
